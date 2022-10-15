@@ -9,8 +9,10 @@ fn main() {
     App::new()
         .add_plugins(DefaultPlugins)
         .insert_resource(ImageSettings::default_nearest())
+        .add_startup_system(player::setup_player)
+        .add_system(player::player_physics)
         .add_system(bevy::window::close_on_esc)
-        .add_system(texture_atlas::setup)
+        //        .add_system(texture_atlas::setup)
         .add_startup_system(setup_camera)
         .run()
 }
