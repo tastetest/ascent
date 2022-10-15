@@ -7,8 +7,8 @@ mod texture_atlas;
 
 fn main() {
     App::new()
-        .add_plugins(DefaultPlugins)
         .insert_resource(ImageSettings::default_nearest())
+        .add_plugins(DefaultPlugins)
         .add_startup_system(player::setup_player)
         .add_system(player::player_physics)
         .add_system(bevy::window::close_on_esc)
