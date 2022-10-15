@@ -1,18 +1,33 @@
 use bevy::prelude::*;
-use rapier2d::prelude::*;
-#[derive(Component)]
-pub struct Player;
+use bevy_rapier2d::prelude::*;
 
-pub fn setup_player(mut commands: Commands, asset_server: Res<AssetServer>) {
+#[derive(Component)]
+pub struct Player(f32);
+
+pub fn setup_player(
+    mut commands: Commands,
+    asset_server: Res<AssetServer>,
+    mut rapier_config: ResMut<RapierConfiguration>,
+) {
+    rapier_config.gravity = Vec2::ZERO;
+
     let entity_spawn = Vec3::ZERO;
-    //    commands.spawn_bundle(Camera2dBundle::default());
+
+    commands.spawn().insert_bundle(Camera2dBundle::default());
+
+    let sprite_size = 50.0;
+
     commands
-        .spawn_bundle(SpriteBundle {
+        .spawn()
+        .insert_bundle(SpriteBundle {
             texture: asset_server.load("character.png"),
             transform: Transform::from_translation(entity_spawn).with_scale(Vec3::splat(5.0)),
             ..default()
         })
-        .insert(Player);
+        .insert(RigidBody::Dynamic)
+        .insert(Velocity::zero())
+        .insert(Collider::ball(5.0))
+        .insert(Player(100.0));
 }
 
 pub fn player_physics(

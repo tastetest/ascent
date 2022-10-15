@@ -1,22 +1,27 @@
 use bevy::prelude::*;
 use bevy::render::texture::*;
-use rapier2d::prelude::*;
 
+use bevy_rapier2d::prelude::*;
+
+mod ldtk;
 mod player;
 mod texture_atlas;
 
 fn main() {
     App::new()
+        .insert_resource(WindowDescriptor {
+            title: "Ascent".to_string(),
+            width: 1000.0,
+            height: 1000.0,
+            ..Default::default()
+        })
         .insert_resource(ImageSettings::default_nearest())
         .add_plugins(DefaultPlugins)
+        .add_plugin(RapierPhysicsPlugin::<NoUserData>::pixels_per_meter(100.0))
+        .add_plugin(RapierDebugRenderPlugin::default())
         .add_startup_system(player::setup_player)
         .add_system(player::player_physics)
         .add_system(bevy::window::close_on_esc)
         //        .add_system(texture_atlas::setup)
-        .add_startup_system(setup_camera)
         .run()
-}
-
-fn setup_camera(mut commands: Commands) {
-    commands.spawn_bundle(Camera2dBundle::default());
 }
