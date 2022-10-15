@@ -22,6 +22,6 @@ fn main() {
         .add_startup_system(player::setup_player)
         .add_system(player::player_physics)
         .add_system(bevy::window::close_on_esc)
-        //        .add_system(texture_atlas::setup)
+        .add_system(texture_atlas::setup)
         .run()
 }
