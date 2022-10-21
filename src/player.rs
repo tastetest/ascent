@@ -29,7 +29,6 @@ pub fn setup_player(
         .insert(Collider::ball(5.0))
         .insert(Player(100.0));
 }
-
 pub fn player_physics(
     mut query: Query<&mut Transform, With<Player>>,
     mut commands: Commands,

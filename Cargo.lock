@@ -120,6 +120,7 @@ version = "0.1.0"
 dependencies = [
  "bevy",
  "bevy_ecs_ldtk",
+ "bevy_ecs_tilemap 0.8.0",
  "bevy_rapier2d",
 ]
 
@@ -346,7 +347,7 @@ dependencies = [
  "anyhow",
  "bevy",
  "bevy_ecs_ldtk_macros",
- "bevy_ecs_tilemap",
+ "bevy_ecs_tilemap 0.7.0",
  "hex",
  "regex",
  "serde",
@@ -382,6 +383,17 @@ name = "bevy_ecs_tilemap"
 version = "0.7.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5ef56c77808aa1fc7379ce538bd9a1e4048794203b4f591f2d06131fc613a1cc"
+dependencies = [
+ "bevy",
+ "log",
+ "regex",
+]
+
+[[package]]
+name = "bevy_ecs_tilemap"
+version = "0.8.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "efd2e8dc13b82406dc2b7ce1b1463f9acb84ba3efa3857558ff9768ba9d7293d"
 dependencies = [
  "bevy",
  "log",
