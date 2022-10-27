@@ -2,7 +2,7 @@ use bevy::prelude::*;
 use bevy_rapier2d::prelude::*;
 
 #[derive(Component)]
-pub struct Player(f32);
+pub struct Player;
 
 pub fn setup_player(
     mut commands: Commands,
@@ -15,8 +15,6 @@ pub fn setup_player(
 
     commands.spawn().insert_bundle(Camera2dBundle::default());
 
-    let sprite_size = 50.0;
-
     commands
         .spawn()
         .insert_bundle(SpriteBundle {
@@ -27,7 +25,7 @@ pub fn setup_player(
         .insert(RigidBody::Dynamic)
         .insert(Velocity::zero())
         .insert(Collider::ball(5.0))
-        .insert(Player(100.0));
+        .insert(Player);
 }
 pub fn player_physics(
     mut query: Query<&mut Transform, With<Player>>,
