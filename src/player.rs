@@ -4,14 +4,8 @@ use bevy_rapier2d::prelude::*;
 #[derive(Component)]
 pub struct Player;
 
-pub fn setup_player(
-    mut commands: Commands,
-    asset_server: Res<AssetServer>,
-    mut rapier_config: ResMut<RapierConfiguration>,
-) {
-    rapier_config.gravity = Vec2::ZERO;
-
-    let entity_spawn = Vec3::ZERO;
+pub fn setup_player(mut commands: Commands, asset_server: Res<AssetServer>) {
+    let entity_spawn = Vec3::new(1.0, 1.0, 2.0);
 
     commands.spawn().insert_bundle(Camera2dBundle::default());
 
@@ -23,15 +17,16 @@ pub fn setup_player(
             ..default()
         })
         .insert(RigidBody::Dynamic)
-        .insert(Velocity::zero())
-        .insert(Collider::ball(5.0))
+        .insert(Collider::cuboid(5.0, 5.0))
+        .insert(ActiveEvents::COLLISION_EVENTS)
+        .insert(LockedAxes::ROTATION_LOCKED)
         .insert(Player);
 }
 pub fn player_physics(
     mut query: Query<&mut Transform, With<Player>>,
-    mut commands: Commands,
     time: Res<Time>,
     keys: Res<Input<KeyCode>>,
+    mut velocities: Query<&mut Velocity>,
 ) {
     if keys.pressed(KeyCode::W) {
         for mut transform in query.iter_mut() {
