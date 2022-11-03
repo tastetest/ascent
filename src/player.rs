@@ -2,7 +2,7 @@ use bevy::prelude::*;
 use bevy_rapier2d::prelude::*;
 
 #[derive(Component)]
-pub struct Player;
+pub struct Player(f32);
 
 pub fn setup_player(mut commands: Commands, asset_server: Res<AssetServer>) {
     let entity_spawn = Vec3::new(1.0, 1.0, 2.0);
@@ -18,34 +18,53 @@ pub fn setup_player(mut commands: Commands, asset_server: Res<AssetServer>) {
         })
         .insert(RigidBody::Dynamic)
         .insert(Collider::cuboid(5.0, 5.0))
-        .insert(ActiveEvents::COLLISION_EVENTS)
+        .insert(Velocity::zero())
         .insert(LockedAxes::ROTATION_LOCKED)
-        .insert(Player);
+        .insert(Player(100.0));
 }
+
 pub fn player_physics(
     mut query: Query<&mut Transform, With<Player>>,
     time: Res<Time>,
-    keys: Res<Input<KeyCode>>,
-    mut velocities: Query<&mut Velocity>,
+    keyboard_input: Res<Input<KeyCode>>,
+    mut player_info: Query<(&Player, &mut Velocity)>,
 ) {
-    if keys.pressed(KeyCode::W) {
-        for mut transform in query.iter_mut() {
-            transform.translation.y += 200.2 * time.delta_seconds();
+    // if keys.pressed(KeyCode::W) {
+    //     for mut transform in query.iter_mut() {
+    //         transform.translation.y += 200.2 * time.delta_seconds();
+    //     }
+    // }
+    // if keys.pressed(KeyCode::A) {
+    //     for mut transform in query.iter_mut() {
+    //         transform.translation.x += -200.2 * time.delta_seconds();
+    //     }
+    // }
+    // if keys.pressed(KeyCode::S) {
+    //     for mut transform in query.iter_mut() {
+    //         transform.translation.y += -200.2 * time.delta_seconds();
+    //     }
+    // }
+    // if keys.pressed(KeyCode::D) {
+    //     for mut transform in query.iter_mut() {
+    //         transform.translation.x += 200.2 * time.delta_seconds();
+    //     }
+    // }
+
+    // this is taken from rapier's examples for a 2d game
+    for (player, mut rb_vels) in player_info.iter_mut() {
+        let up = keyboard_input.pressed(KeyCode::W) || keyboard_input.pressed(KeyCode::Up);
+        let down = keyboard_input.pressed(KeyCode::S) || keyboard_input.pressed(KeyCode::Down);
+        let left = keyboard_input.pressed(KeyCode::A) || keyboard_input.pressed(KeyCode::Left);
+        let right = keyboard_input.pressed(KeyCode::D) || keyboard_input.pressed(KeyCode::Right);
+
+        let x_axis = -(left as i8) + right as i8;
+        let y_axis = -(down as i8) + up as i8;
+
+        let mut move_delta = Vec2::new(x_axis as f32, y_axis as f32);
+        if move_delta != Vec2::ZERO {
+            move_delta /= move_delta.length();
         }
-    }
-    if keys.pressed(KeyCode::A) {
-        for mut transform in query.iter_mut() {
-            transform.translation.x += -200.2 * time.delta_seconds();
-        }
-    }
-    if keys.pressed(KeyCode::S) {
-        for mut transform in query.iter_mut() {
-            transform.translation.y += -200.2 * time.delta_seconds();
-        }
-    }
-    if keys.pressed(KeyCode::D) {
-        for mut transform in query.iter_mut() {
-            transform.translation.x += 200.2 * time.delta_seconds();
-        }
+
+        rb_vels.linvel = move_delta * player.0;
     }
 }
