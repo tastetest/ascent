@@ -5,6 +5,7 @@ stages to win.
 # TODO
 1. Create a character with basic movement
   -- Need to update velocities for movement, otherwise this is finished.
+   --FIXED !!!
 2. Create a tilemap with collisions for your player to move through
   -- DONE !!!!
 3. add in enemies
@@ -14,4 +15,3 @@ stages to win.
 7. add in main menu/pause menu
 
 
-- add velocity based movement, instead of just incrementing the x or y
