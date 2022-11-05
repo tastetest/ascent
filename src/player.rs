@@ -20,7 +20,7 @@ pub fn setup_player(mut commands: Commands, asset_server: Res<AssetServer>) {
         .insert(Collider::cuboid(5.0, 5.0))
         .insert(Velocity::zero())
         .insert(LockedAxes::ROTATION_LOCKED)
-        .insert(Player(100.0));
+        .insert(Player(300.0));
 }
 
 pub fn player_physics(
@@ -29,28 +29,6 @@ pub fn player_physics(
     keyboard_input: Res<Input<KeyCode>>,
     mut player_info: Query<(&Player, &mut Velocity)>,
 ) {
-    // if keys.pressed(KeyCode::W) {
-    //     for mut transform in query.iter_mut() {
-    //         transform.translation.y += 200.2 * time.delta_seconds();
-    //     }
-    // }
-    // if keys.pressed(KeyCode::A) {
-    //     for mut transform in query.iter_mut() {
-    //         transform.translation.x += -200.2 * time.delta_seconds();
-    //     }
-    // }
-    // if keys.pressed(KeyCode::S) {
-    //     for mut transform in query.iter_mut() {
-    //         transform.translation.y += -200.2 * time.delta_seconds();
-    //     }
-    // }
-    // if keys.pressed(KeyCode::D) {
-    //     for mut transform in query.iter_mut() {
-    //         transform.translation.x += 200.2 * time.delta_seconds();
-    //     }
-    // }
-
-    // this is taken from rapier's examples for a 2d game
     for (player, mut rb_vels) in player_info.iter_mut() {
         let up = keyboard_input.pressed(KeyCode::W) || keyboard_input.pressed(KeyCode::Up);
         let down = keyboard_input.pressed(KeyCode::S) || keyboard_input.pressed(KeyCode::Down);

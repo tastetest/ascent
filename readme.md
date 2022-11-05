@@ -10,6 +10,7 @@ stages to win.
   -- DONE !!!!
 3. add in enemies
 4. add in weapon types 
+-- or make it a bow focused game
 5. add in an inventory system
 6. add in UI 
 7. add in main menu/pause menu

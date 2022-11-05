@@ -40,20 +40,6 @@ pub struct MyBundle {
     sprite_sheet: SpriteSheetBundle,
 }
 
-// impl From<EntityInstance> for ColliderBundle {
-//     fn from(entity_instance: EntityInstance) -> ColliderBundle {
-//         match entity_instance.identifier.as_ref() {
-//             "Tiles" => ColliderBundle {
-//                 collider: Collider::cuboid(3.0, 3.0),
-//             },
-//             "Walls" => ColliderBundle {
-//                 collider: Collider::cuboid(2.0, 2.0),
-//             },
-//             _ => ColliderBundle::default(),
-//         }
-//     }
-// }
-
 impl From<IntGridCell> for ColliderBundle {
     fn from(int_grid_cell: IntGridCell) -> ColliderBundle {
         if int_grid_cell.value == 2 {
