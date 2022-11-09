@@ -16,7 +16,7 @@ fn main() {
             height: 1000.0,
             ..Default::default()
         })
-        .insert_resource(ClearColor(Color::rgb(0.0, 0.0, 0.0)))
+        .insert_resource(ClearColor(Color::rgb(0.18, 0.11, 0.13)))
         .insert_resource(ImageSettings::default_nearest())
         .add_plugins(DefaultPlugins)
         .add_plugin(LdtkPlugin)

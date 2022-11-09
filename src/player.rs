@@ -20,7 +20,7 @@ pub fn setup_player(mut commands: Commands, asset_server: Res<AssetServer>) {
         .insert(Collider::cuboid(5.0, 5.0))
         .insert(Velocity::zero())
         .insert(LockedAxes::ROTATION_LOCKED)
-        .insert(Player(3.0));
+        .insert(Player(8.0));
 }
 
 pub fn player_physics(
