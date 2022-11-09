@@ -20,7 +20,7 @@ pub fn setup_player(mut commands: Commands, asset_server: Res<AssetServer>) {
         .insert(Collider::cuboid(5.0, 5.0))
         .insert(Velocity::zero())
         .insert(LockedAxes::ROTATION_LOCKED)
-        .insert(Player(300.0));
+        .insert(Player(3.0));
 }
 
 pub fn player_physics(
@@ -40,7 +40,7 @@ pub fn player_physics(
 
         let mut move_delta = Vec2::new(x_axis as f32, y_axis as f32);
         if move_delta != Vec2::ZERO {
-            move_delta /= move_delta.length();
+            move_delta /= move_delta.length() * time.delta_seconds();
         }
 
         rb_vels.linvel = move_delta * player.0;
