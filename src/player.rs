@@ -7,14 +7,15 @@ pub struct Player(f32);
 pub fn setup_player(mut commands: Commands, asset_server: Res<AssetServer>) {
     let entity_spawn = Vec3::new(1.0, 1.0, 2.0);
 
-    commands.spawn().insert_bundle(Camera2dBundle::default());
-
     commands
         .spawn()
         .insert_bundle(SpriteBundle {
             texture: asset_server.load("character.png"),
             transform: Transform::from_translation(entity_spawn).with_scale(Vec3::splat(5.0)),
             ..default()
+        })
+        .with_children(|parent| {
+            parent.spawn_bundle(Camera2dBundle::default());
         })
         .insert(RigidBody::Dynamic)
         .insert(Collider::cuboid(5.0, 5.0))

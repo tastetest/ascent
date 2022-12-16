@@ -122,6 +122,7 @@ dependencies = [
  "bevy_ecs_ldtk",
  "bevy_ecs_tilemap 0.8.0",
  "bevy_rapier2d",
+ "big-brain",
 ]
 
 [[package]]
@@ -873,6 +874,15 @@ dependencies = [
  "wasm-bindgen",
  "web-sys",
  "winit",
+]
+
+[[package]]
+name = "big-brain"
+version = "0.14.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7c5e2361eee29536b4ef1e65da0dc2f63380ffdc5622418b6902f412cd63d2e7"
+dependencies = [
+ "bevy",
 ]
 
 [[package]]
