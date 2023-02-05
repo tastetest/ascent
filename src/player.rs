@@ -4,7 +4,7 @@ use bevy_rapier2d::prelude::*;
 #[derive(Component)]
 pub struct Player {
     health: f32,
-    position: Vec2,
+    velocity: f32,
 }
 
 impl Player {
@@ -35,7 +35,7 @@ pub fn setup_player(mut commands: Commands, asset_server: Res<AssetServer>) {
         .insert(LockedAxes::ROTATION_LOCKED)
         .insert(Player {
             health: 100.0,
-            position: Vec2::new(1.0, 1.0),
+            velocity: 10.0,
         });
 }
 pub fn player_physics(
@@ -58,6 +58,6 @@ pub fn player_physics(
             move_delta /= move_delta.length() * time.delta_seconds();
         }
 
-        rb_vels.linvel = move_delta * player.position;
+        rb_vels.linvel = move_delta * player.velocity;
     }
 }
