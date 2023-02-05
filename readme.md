@@ -13,8 +13,8 @@ stages to win.
 6. [ ] add in UI 
 7. [ ] add in main menu/pause menu
 8. [ ] make it prettier
-  * color palette for the whole game
-    --> 120B0D - EEE0CB - BAA898 - 848586 - C2847A
-  * make wall textures/ground textures
-  * draw enemies
+    * color palette for the whole game
+      --> 120B0D - EEE0CB - BAA898 - 848586 - C2847A
+    * make wall textures/ground textures
+    * draw enemies
 9. [ ] add in player health
