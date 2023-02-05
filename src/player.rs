@@ -2,7 +2,16 @@ use bevy::prelude::*;
 use bevy_rapier2d::prelude::*;
 
 #[derive(Component)]
-pub struct Player(f32);
+pub struct Player {
+    health: f32,
+    position: Vec2,
+}
+
+impl Player {
+    pub fn health_events(&self) {
+        if self.health == 0.0 {}
+    }
+}
 
 pub fn setup_player(mut commands: Commands, asset_server: Res<AssetServer>) {
     let entity_spawn = Vec3::new(1.0, 1.0, 2.0);
@@ -24,9 +33,11 @@ pub fn setup_player(mut commands: Commands, asset_server: Res<AssetServer>) {
         .insert(Collider::cuboid(5.0, 5.0))
         .insert(Velocity::zero())
         .insert(LockedAxes::ROTATION_LOCKED)
-        .insert(Player(8.0));
+        .insert(Player {
+            health: 100.0,
+            position: Vec2::new(1.0, 1.0),
+        });
 }
-
 pub fn player_physics(
     mut query: Query<&mut Transform, With<Player>>,
     time: Res<Time>,
@@ -47,6 +58,6 @@ pub fn player_physics(
             move_delta /= move_delta.length() * time.delta_seconds();
         }
 
-        rb_vels.linvel = move_delta * player.0;
+        rb_vels.linvel = move_delta * player.position;
     }
 }
