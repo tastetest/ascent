@@ -11,11 +11,14 @@ pub fn setup_player(mut commands: Commands, asset_server: Res<AssetServer>) {
         .spawn()
         .insert_bundle(SpriteBundle {
             texture: asset_server.load("character.png"),
-            transform: Transform::from_translation(entity_spawn).with_scale(Vec3::splat(5.0)),
+            transform: Transform::from_translation(entity_spawn).with_scale(Vec3::splat(6.0)),
             ..default()
         })
         .with_children(|parent| {
-            parent.spawn_bundle(Camera2dBundle::default());
+            parent.spawn_bundle(Camera2dBundle {
+                transform: Transform::from_scale(Vec3::splat(0.08)),
+                ..default()
+            }); // setting up the scale of the camera
         })
         .insert(RigidBody::Dynamic)
         .insert(Collider::cuboid(5.0, 5.0))
