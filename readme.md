@@ -18,3 +18,5 @@ stages to win.
     * make wall textures/ground textures
     * draw enemies
 9. [ ] add in player health
+    * added in health field within player struct
+    * made player health set to 100 when spawning
