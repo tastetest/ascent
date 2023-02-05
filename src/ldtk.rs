@@ -43,7 +43,6 @@ pub struct MyBundle {
 impl From<IntGridCell> for ColliderBundle {
     fn from(int_grid_cell: IntGridCell) -> ColliderBundle {
         if int_grid_cell.value == 2 {
-            println!("this line has been reached");
             ColliderBundle {
                 collider: Collider::cuboid(9.0, 9.0),
             }
