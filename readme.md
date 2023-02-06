@@ -25,7 +25,7 @@ stages to win.
 ## Server
 
 - the multiplayer protocol should look something like this: 
-    struct Protocol {
+```    struct Protocol {
         Position,
         Velocity,
         port,
@@ -34,5 +34,5 @@ stages to win.
         damage,
         text,
         
-    }
+    }```
 - because this will be a quick paced multiplayer game, it will use UDP
