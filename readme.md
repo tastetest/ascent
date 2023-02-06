@@ -20,3 +20,19 @@ stages to win.
 9. [ ] add in player health
     * added in health field within player struct
     * made player health set to 100 when spawning
+---
+
+## Server
+
+- the multiplayer protocol should look something like this: 
+    struct Protocol {
+        Position,
+        Velocity,
+        port,
+        IP,
+        health,
+        damage,
+        text,
+        
+    }
+- because this will be a quick paced multiplayer game, it will use UDP
