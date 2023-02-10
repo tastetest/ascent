@@ -30,7 +30,6 @@ fn main() {
         .register_ldtk_int_cell::<ldtk::ColliderBundle>(2)
         .add_system(player::player_physics)
         .add_system(bevy::window::close_on_esc)
-        // .add_system(texture_atlas::setup)
         .run()
 }
 
