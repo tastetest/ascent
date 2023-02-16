@@ -24,12 +24,19 @@ fn main() {
         .add_plugin(RapierDebugRenderPlugin::default())
         .add_startup_system(ldtk::ldtk_setup)
         .insert_resource(LevelSelection::Index(0))
+        .insert_resource(LdtkSettings {
+            level_spawn_behavior: LevelSpawnBehavior::UseWorldTranslation {
+                load_level_neighbors: false,
+            },
+            ..Default::default()
+        })
         .register_ldtk_entity::<ldtk::MyBundle>("Level_1")
         .add_startup_system(gravity_setup)
         .add_startup_system(player::setup_player)
-        .register_ldtk_int_cell::<ldtk::ColliderBundle>(2)
+        .register_ldtk_int_cell::<ldtk::WallBundle>(2)
         .add_system(player::player_physics)
         .add_system(bevy::window::close_on_esc)
+        .add_system(ldtk::spawn_wall_collisions)
         .run()
 }
 
