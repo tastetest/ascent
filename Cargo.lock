@@ -134,8 +134,8 @@ dependencies = [
  "bevy 0.9.1",
  "bevy_ecs_ldtk",
  "bevy_ecs_tilemap 0.8.0",
- "bevy_rapier2d",
  "big-brain",
+ "rapier2d",
 ]
 
 [[package]]
@@ -616,7 +616,7 @@ dependencies = [
  "bevy_pbr 0.9.1",
  "bevy_reflect 0.9.1",
  "bevy_render 0.9.1",
- "bevy_scene 0.9.1",
+ "bevy_scene",
  "bevy_tasks 0.9.1",
  "bevy_transform 0.9.1",
  "bevy_utils 0.9.1",
@@ -700,7 +700,6 @@ dependencies = [
  "bevy_ptr 0.8.1",
  "bevy_reflect 0.8.1",
  "bevy_render 0.8.1",
- "bevy_scene 0.8.1",
  "bevy_sprite 0.8.1",
  "bevy_tasks 0.8.1",
  "bevy_time 0.8.1",
@@ -735,7 +734,7 @@ dependencies = [
  "bevy_ptr 0.9.1",
  "bevy_reflect 0.9.1",
  "bevy_render 0.9.1",
- "bevy_scene 0.9.1",
+ "bevy_scene",
  "bevy_sprite 0.9.1",
  "bevy_tasks 0.9.1",
  "bevy_text",
@@ -892,19 +891,6 @@ name = "bevy_ptr"
 version = "0.9.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8ec44f7655039546bc5d34d98de877083473f3e9b2b81d560c528d6d74d3eff4"
-
-[[package]]
-name = "bevy_rapier2d"
-version = "0.16.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e94ea9324a836efedf4b3673a3c5e2011490fa440478d244fe6b1783557ab4fd"
-dependencies = [
- "bevy 0.8.1",
- "bitflags",
- "log",
- "nalgebra",
- "rapier2d",
-]
 
 [[package]]
 name = "bevy_reflect"
@@ -1083,28 +1069,6 @@ dependencies = [
 
 [[package]]
 name = "bevy_scene"
-version = "0.8.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a045d575d2c8f776d8ea965363c81660243fefbfc3712ead938b00dfd6797216"
-dependencies = [
- "anyhow",
- "bevy_app 0.8.1",
- "bevy_asset 0.8.1",
- "bevy_derive 0.8.1",
- "bevy_ecs 0.8.1",
- "bevy_hierarchy 0.8.1",
- "bevy_reflect 0.8.1",
- "bevy_render 0.8.1",
- "bevy_transform 0.8.1",
- "bevy_utils 0.8.1",
- "ron 0.7.1",
- "serde",
- "thiserror",
- "uuid",
-]
-
-[[package]]
-name = "bevy_scene"
 version = "0.9.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ea9c66a628c833d53bae54fe94cbc0d3f12c29e9d2e6c3f2356d45ad57db0c8c"
@@ -1119,7 +1083,7 @@ dependencies = [
  "bevy_render 0.9.1",
  "bevy_transform 0.9.1",
  "bevy_utils 0.9.1",
- "ron 0.8.0",
+ "ron",
  "serde",
  "thiserror",
  "uuid",
@@ -2697,7 +2661,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "da388c517f7c8540918d00f7aed9864c1ead01a14a0cc21513b171857119de12"
 dependencies = [
  "approx",
- "glam 0.21.3",
  "matrixmultiply",
  "nalgebra-macros",
  "num-complex",
@@ -3233,6 +3196,7 @@ dependencies = [
  "parry2d",
  "rustc-hash",
  "simba",
+ "vec_map",
 ]
 
 [[package]]
@@ -3320,17 +3284,6 @@ checksum = "eb10b653d5ec0e9411a2e7d46e2c7f4046fd87d35b9955bd73ba4108d69072b5"
 dependencies = [
  "cpal",
  "lewton",
-]
-
-[[package]]
-name = "ron"
-version = "0.7.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "88073939a61e5b7680558e6be56b419e208420c2adb92be54921fa6b72283f1a"
-dependencies = [
- "base64",
- "bitflags",
- "serde",
 ]
 
 [[package]]
