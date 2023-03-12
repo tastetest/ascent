@@ -130,6 +130,7 @@ checksum = "8da52d66c7071e2e3fa2a1e5c6d088fec47b593032b254f5e980de8ea54454d6"
 name = "ascent"
 version = "0.1.0"
 dependencies = [
+ "alsa-sys",
  "bevy 0.9.1",
  "bevy_ecs_ldtk",
  "bevy_ecs_tilemap 0.8.0",
