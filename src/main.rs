@@ -2,7 +2,7 @@ use bevy::prelude::*;
 use bevy::render::texture::*;
 use bevy_ecs_ldtk::prelude::*;
 
-use rapier2d::prelude::*;
+use bevy_rapier2d::prelude::*;
 
 mod ldtk;
 mod player;
