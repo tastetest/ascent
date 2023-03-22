@@ -32,12 +32,12 @@ pub fn setup_player(mut commands: Commands, asset_server: Res<AssetServer>) {
         .insert(RigidBody::Dynamic)
         .insert(Collider::cuboid(5.0, 5.0))
         .insert(Velocity::zero())
-        .insert(LockedAxes::ROTATION_LOCKED)
         .insert(Player {
             health: 100.0,
             velocity: 10.0,
         });
 }
+
 pub fn player_physics(
     mut query: Query<&mut Transform, With<Player>>,
     time: Res<Time>,
