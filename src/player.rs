@@ -1,17 +1,9 @@
 use bevy::prelude::*;
 use bevy_rapier2d::prelude::*;
 
-#[derive(Default)]
-pub struct Player {
-    health: f32,
-    speed: f32,
-}
+#[derive(Default, Component)]
+pub struct Player(f32); 
 
-impl Player {
-    pub fn health_events(&self) {
-        if self.health == 0.0 {}
-    }
-}
 
 pub fn setup_player(mut commands: Commands, asset_server: Res<AssetServer>) {
     let entity_spawn = Vec3::new(1.0, 1.0, 2.0);
@@ -24,7 +16,7 @@ pub fn setup_player(mut commands: Commands, asset_server: Res<AssetServer>) {
             ..default()
         })
         .with_children(|parent| {
-            parent.spawn_bundle(Camera2dBundle {
+            parent.spawn(Camera2dBundle {
                 transform: Transform::from_scale(Vec3::splat(0.08)),
                 ..default()
             }); // setting up the scale of the camera
@@ -32,10 +24,8 @@ pub fn setup_player(mut commands: Commands, asset_server: Res<AssetServer>) {
         .insert(RigidBody::Dynamic)
         .insert(Collider::cuboid(5.0, 5.0))
         .insert(Velocity::zero())
-        .insert(Player {
-            health: 100.0,
-            speed: 10.0,
-        });
+        .insert(Player(10.0) 
+       );
 }
 
 pub fn player_physics(
