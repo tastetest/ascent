@@ -1,24 +1,23 @@
 use bevy::prelude::*;
-use bevy::render::texture::*;
 use bevy_ecs_ldtk::prelude::*;
 
 use bevy_rapier2d::prelude::*;
 
 mod ldtk;
 mod player;
-// mod texture_atlas;
 
 fn main() {
     App::new()
-        .insert_resource(WindowDescriptor {
+       .add_plugins(DefaultPlugins.set(WindowPlugin {
+        window: WindowDescriptor {
+            width: 800.0,
+            height: 800.0,
             title: "Ascent".to_string(),
-            width: 1000.0,
-            height: 1000.0,
-            ..Default::default()
-        })
+            ..default()
+            },
+        ..default()
+        }).set(ImagePlugin::default_nearest())) 
         .insert_resource(ClearColor(Color::rgb(0.18, 0.11, 0.13)))
-        .insert_resource(ImageSettings::default_nearest())
-        .add_plugins(DefaultPlugins)
         .add_plugin(LdtkPlugin)
         .add_plugin(RapierPhysicsPlugin::<NoUserData>::pixels_per_meter(100.0))
         .add_plugin(RapierDebugRenderPlugin::default())
@@ -40,6 +39,6 @@ fn main() {
         .run()
 }
 
-pub fn gravity_setup(mut rapier_config: ResMut<RapierConfiguration>) {
+ pub fn gravity_setup(mut rapier_config: ResMut<RapierConfiguration>) {
     rapier_config.gravity = Vec2::ZERO;
-}
+} 

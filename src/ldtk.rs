@@ -23,7 +23,7 @@ pub struct WallBundle {
 
 pub fn ldtk_setup(mut commands: Commands, asset_server: Res<AssetServer>) {
     let level1_handle = asset_server.load("./level1.ldtk");
-    commands.spawn_bundle(LdtkWorldBundle {
+    commands.spawn(LdtkWorldBundle {
         ldtk_handle: level1_handle,
         ..Default::default()
     });
@@ -144,8 +144,7 @@ pub fn spawn_wall_collisions(
                 commands.entity(level_entity).with_children(|level| {
                     for wall_rect in wall_rects {
                         level
-                            .spawn()
-                            .insert(Collider::cuboid(
+                            .spawn(Collider::cuboid(
                                 (wall_rect.right as f32 - wall_rect.left as f32 + 1.)
                                     * grid_size as f32
                                     / 2.,
