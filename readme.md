@@ -4,7 +4,6 @@ stages to win.
 
 # TODO
 -- CREATE FULL REWRITE --
-    1. Update Package Versions to be compatible with BEVY 0.9.0 -- completed
     2. Rewrite Player.rs and Main.rs 
     3. fix ldtk to spawn collisions properly -- this is what we are working on
     4. remove unnecessary files/functions

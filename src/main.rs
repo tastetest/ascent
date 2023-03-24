@@ -16,7 +16,9 @@ fn main() {
             ..default()
             },
         ..default()
-        }).set(ImagePlugin::default_nearest())) 
+        }).set(ImagePlugin::default_nearest()).set(AssetPlugin {
+            watch_for_changes: true,
+            ..Default::default()})) 
         .insert_resource(ClearColor(Color::rgb(0.18, 0.11, 0.13)))
         .add_plugin(LdtkPlugin)
         .add_plugin(RapierPhysicsPlugin::<NoUserData>::pixels_per_meter(100.0))
