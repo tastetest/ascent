@@ -22,9 +22,10 @@ pub fn setup_player(mut commands: Commands, asset_server: Res<AssetServer>) {
             }); // setting up the scale of the camera
         })
         .insert(RigidBody::Dynamic)
+        .insert(LockedAxes::ROTATION_LOCKED)
         .insert(Collider::cuboid(5.0, 5.0))
         .insert(Velocity::zero())
-        .insert(Player(10.0) 
+        .insert(Player(90.0) 
        );
 }
 
