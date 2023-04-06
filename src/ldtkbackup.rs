@@ -145,10 +145,10 @@ pub fn spawn_wall_collisions(
                     for wall_rect in wall_rects {
                         level
                             .spawn(Collider::cuboid(
-                                (wall_rect.right as f32 - wall_rect.left as f32 + 4.)
+                                (wall_rect.right as f32 - wall_rect.left as f32 + 1.)
                                     * grid_size as f32
                                     / 2.,
-                                (wall_rect.top as f32 - wall_rect.bottom as f32 + 4.)
+                                (wall_rect.top as f32 - wall_rect.bottom as f32 + 1.)
                                     * grid_size as f32
                                     / 2.,
                             ))
