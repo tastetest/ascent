@@ -42,6 +42,7 @@ struct Protocol {
         health,
         damage,
         text,
+        player_count,
         
     }
 ```
