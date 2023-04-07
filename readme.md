@@ -5,11 +5,11 @@ stages to win.
 # TODO
 -- CREATE FULL REWRITE --
     1. Update Package Versions to be compatible with BEVY 0.9.0 -- completed
-    2. Rewrite Player.rs and Main.rs 
+    2. Rewrite Player.rs and Main.rs -- completed
     3. fix ldtk to spawn collisions properly
     4. remove unnecessary files/functions
     5. implement brand new AI 
-    6. fix player controller
+    6. fix player controller -- completed
 1. [x] Create a character with basic movement
 2. [x] Create a tilemap with collisions for your player to move through
 3. [ ] add in enemies
