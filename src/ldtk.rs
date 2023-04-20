@@ -23,10 +23,11 @@ pub struct WallBundle {
 
 pub fn ldtk_setup(mut commands: Commands, asset_server: Res<AssetServer>) {
     let level1_handle = asset_server.load("./level1.ldtk");
-    commands.spawn(LdtkWorldBundle {
+    commands
+        .spawn(LdtkWorldBundle {
         ldtk_handle: level1_handle,
         ..Default::default()
-    });
+        });
 }
 
 // setting up the LDTK bundle
