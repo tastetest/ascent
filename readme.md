@@ -30,20 +30,4 @@ stages to win.
     * made player health set to 100 when spawning
 ---
 
-## Server
 
-- the multiplayer protocol should look something like this: 
-```    
-struct Protocol {
-        Position,
-        Velocity,
-        port,
-        IP,
-        health,
-        damage,
-        text,
-        player_count,
-        
-    }
-```
-- because this will be a quick paced multiplayer game, it will use UDP

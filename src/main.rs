@@ -27,7 +27,7 @@ fn main() {
         .insert_resource(LevelSelection::Index(0))
         .insert_resource(LdtkSettings {
             level_spawn_behavior: LevelSpawnBehavior::UseWorldTranslation {
-                load_level_neighbors: false,
+                load_level_neighbors: true,
             },
             ..Default::default()
         })
